@@ -3,7 +3,7 @@
 # Simple script to organize files into folders named after their extensions
 
 require 'fileutils'
-Directory = "/home/matiasl/Documents/"
+Directory = "SET-YOUR-DIRECTORY-HERE"
 
 Dir.chdir(Directory) do
     # Gets all the files from a directory into an array
