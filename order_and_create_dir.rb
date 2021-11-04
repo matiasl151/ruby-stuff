@@ -3,7 +3,7 @@
 # Simple script to organize files into folders named after their extensions
 
 require 'fileutils'
-Directory = "SET-DIRECTORY-TO-ORGANIZE"
+Directory = "/home/matiasl/Documents/"
 
 Dir.chdir(Directory) do
     # Gets all the files from a directory into an array
@@ -11,16 +11,17 @@ Dir.chdir(Directory) do
     
     allFiles.each do |n|
         # Extracts the extension name
-        ext = File.extname(n) 
+        ext = File.extname(n).sub(/./, '') 
+        puts ext
         begin
             # Creates the directory with the name of the extension
             # ext[1..] is used to eliminate the '.'
-            FileUtils.mkdir(ext[1..]) unless Dir.exists?(ext[1..]) 
+            FileUtils.mkdir(ext) unless Dir.exists?(ext) 
 
-            FileUtils.mv(n, Directory+"/#{ext[1..]}")
+            FileUtils.mv(n, Directory+"/#{ext}")
         rescue => exception
             puts("Already moved file #{File.basename("#{n}")}")
-        end
+        #end
                           
     end
 end
